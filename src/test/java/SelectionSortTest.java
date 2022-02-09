@@ -21,6 +21,12 @@ class SelectionSortTest {
     }
 
     @Test
+    void selectionSortUsingArrayList_Empty1() {
+        List<Integer> list = new ArrayList<>();
+        assertThrows(InvalidInputException.class, ()->selectionSort.selectionSortUsingArrayList(list));
+    }
+
+    @Test
     void selectionSortUsingArrayList1() throws InvalidInputException {
         List<Integer> list = Arrays.asList(8,9,3,7,2,1,0,4);
         selectionSort.selectionSortUsingArrayList(list);
