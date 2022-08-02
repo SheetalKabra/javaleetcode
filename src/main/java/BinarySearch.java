@@ -1,14 +1,14 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class BinarySearch {
+public class BinarySearch extends InterviewBit1 {
 
 //    public static void main(String[] args) throws InvalidInputException {
 //        BinarySearch bs = new BinarySearch();
 //        List<Integer> list = Arrays.asList(2,8,9,13,28,21,23,45,50);
 //        bs.binarySearchUsingArrayList(null, 45);
 //    }
+
+
     public int  binarySearchUsingArrayList(List<Integer> list, int searchItem) throws InvalidInputException{
         if(list == null || list.size() == 0){
             throw new InvalidInputException();

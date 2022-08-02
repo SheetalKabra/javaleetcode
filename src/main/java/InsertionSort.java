@@ -6,9 +6,11 @@ public class InsertionSort {
     public static void main(String[] args) {
 //        List<Integer> arrayList = Arrays.asList(14, 33, 27, 10, 53, 19, 89, 44);
 //        InsertionSort is = new InsertionSort();
-//        is.insertionSort(arrayList.toArray(new Integer[arrayList.size()]));
-//        is.insertionSortUsingArrayList(arrayList);
-
+////        is.insertionSort(arrayList.toArray(new Integer[arrayList.size()]));
+////        is.insertionSortUsingArrayList(arrayList);
+//        List<Integer> list = Arrays.asList(8,7,6,5,4,3,2,1);
+//        is.insertionSortUsingArrayList(list);
+        //assertEquals(Arrays.asList(1,2,3,4,5,6,7,8), list);
     }
 
     public Integer[] insertionSort(Integer[] arr) {
