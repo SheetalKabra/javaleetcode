@@ -24,7 +24,8 @@ public class GoodSubarrays {
 
     public static void main(String[] args) {
         GoodSubarrays g = new GoodSubarrays();
-        System.out.println(g.solve(new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5)), 4));
-        System.out.println(g.solve(new ArrayList<Integer>(Arrays.asList(13, 16, 16, 15, 9, 16, 2, 7, 6, 17, 3, 9)), 65));
+        System.out.println(g.solve(new ArrayList<Integer>(Arrays.asList(15,8,16)), 242));
+//        System.out.println(g.solve(new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5)), 4));
+//        System.out.println(g.solve(new ArrayList<Integer>(Arrays.asList(13, 16, 16, 15, 9, 16, 2, 7, 6, 17, 3, 9)), 65));
     }
 }
