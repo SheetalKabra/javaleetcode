@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 public class LongestCommonPrefix {
 
-    public String longestCommonPrefix(ArrayList<String> A) {
+    public String longestCommonPrefix1(ArrayList<String> A) {
         int N = A.size();
         if(N>1){
             //Now firstly take longest common prefix in b/w first two strings
@@ -55,8 +55,31 @@ public class LongestCommonPrefix {
         }
     }
 
+
+    public String longestCommonPrefix(ArrayList<String> A) {
+        int N = A.size();
+        if(N == 0){
+            return "";
+        }
+        int maxl = 0;
+        int maxr = A.get(0).length()-1;
+        for(int i=1; i<N; i++){
+            if(A.get(i).length() < (maxr-maxl+1)){
+                maxr = A.get(i).length()-1;
+            }
+            for(int j=maxl; j<maxr; j++){
+                if(A.get(i).charAt(j) != A.get(i-1).charAt(j)){
+                    maxr = j-1;
+                    break;
+                }
+            }
+        }
+        //System.out.println("maxl:"+maxl+", maxr:"+maxr);
+        return A.get(0).substring(maxl, maxr+1);
+    }
     public static void main(String[] args) {
         LongestCommonPrefix l = new LongestCommonPrefix();
+        System.out.println(l.longestCommonPrefix(new ArrayList<>(Arrays.asList("ABCD"))));
         System.out.println(l.longestCommonPrefix(new ArrayList<>(Arrays.asList("aaaaaaaaaaaaaaaaaaaaaaa",
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "aaaaaaaaaaaaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -67,6 +90,7 @@ public class LongestCommonPrefix {
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" ))));
         System.out.println(l.longestCommonPrefix(new ArrayList<>(Arrays.asList("abcd", "abde", "abcf"))));
+        System.out.println(l.longestCommonPrefix(new ArrayList<>(Arrays.asList("abcd", "bde", "abcf"))));
         System.out.println(l.longestCommonPrefix(new ArrayList<>(Arrays.asList("abcdefgh", "aefghijk", "abcefgh"))));
         System.out.println(l.longestCommonPrefix(new ArrayList<>(Arrays.asList("abcdefgh", "aefghijk", "wabcefgh"))));
         System.out.println(l.longestCommonPrefix(new ArrayList<>(Arrays.asList("aaaaaaaaaaaaaaaaaaaaaaa",
