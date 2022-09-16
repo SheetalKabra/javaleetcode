@@ -8,16 +8,45 @@ public class MaxSumsubmatrix {
 //        A.add(1, new ArrayList<>(Arrays.asList(20,10)));
 
 
-        A.add(0, new ArrayList<>(Arrays.asList(-6,-6)));
-        A.add(1, new ArrayList<>(Arrays.asList(-29, -8)));
-        A.add(1, new ArrayList<>(Arrays.asList(3, -8)));
-        A.add(1, new ArrayList<>(Arrays.asList(-15, 2)));
-        A.add(1, new ArrayList<>(Arrays.asList(25,25)));
-        A.add(1, new ArrayList<>(Arrays.asList(20, -5)));
+//        A.add(0, new ArrayList<>(Arrays.asList(-6,-6)));
+//        A.add(1, new ArrayList<>(Arrays.asList(-29, -8)));
+//        A.add(1, new ArrayList<>(Arrays.asList(3, -8)));
+//        A.add(1, new ArrayList<>(Arrays.asList(-15, 2)));
+//        A.add(1, new ArrayList<>(Arrays.asList(25,25)));
+//        A.add(1, new ArrayList<>(Arrays.asList(20, -5)));
+
+        A.add(0, new ArrayList<>(Arrays.asList(3,-2,2,3,-7)));
+        A.add(1, new ArrayList<>(Arrays.asList(4,3,-1,2,-1)));
+        A.add(2, new ArrayList<>(Arrays.asList(0,2,1,1,3)));
+        A.add(3, new ArrayList<>(Arrays.asList(-1,1,0,4,4)));
+        A.add(4, new ArrayList<>(Arrays.asList(2,4,2,6,7)));
 
         System.out.println(solve(A));
     }
+
     public static int solve(ArrayList<ArrayList<Integer>> A) {
+        int N = A.size();
+        int M = A.get(0).size();
+        ArrayList<Integer> B = new ArrayList<>();
+        for(int i=0;i<M;i++){
+            B.add(i, 0);
+        }
+        for(int r1=0; r1<N; r1++){
+            for(int j=0; j<M; j++){
+                int sum=0;
+                for(int i=0; i<=r1; i++){
+                    sum = sum + A.get(i).get(j);
+                }
+                B.set(j, sum);
+            }
+            System.out.println(B);
+
+        }
+        return 1;
+    }
+
+
+    public static int solveOld(ArrayList<ArrayList<Integer>> A) {
         int N = A.size();
         int M = A.get(0).size();
         ArrayList<ArrayList<Integer>> pfa = new ArrayList<>();
