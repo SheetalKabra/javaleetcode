@@ -1,38 +1,38 @@
 public class Scaler_BitManiII_DivideIntegers {
     public static void main(String[] args) {
-//        System.out.println(Integer.MAX_VALUE);
-//        System.out.println(divide(5,2));
-//        System.out.println(divide(7,1));
-//        System.out.println(divide(2147483647,1));
-        System.out.println(divide(-2147483648,-1));
+        System.out.println(divide(5,2));
+        System.out.println(divide(7,1));
+        System.out.println(divide(2147483647,1));
+        System.out.println(divide(-2147483648,1));
+        System.out.println(divide(-2147483648,-10000000));
+        System.out.println(divide(-2147483648,10000000));
 
     }
     public static int divide(int A, int B) {
-        System.out.println(B*A);
-        int cnt = 0;
-        int n = B;
-        if(Math.abs(B) == 1){
-            System.out.println(B);
-            System.out.println(A);
-            if(B > Integer.MAX_VALUE || B*A > Integer.MAX_VALUE){
+        long cnt = 0;
+        long n = Math.abs(B);
+        if(Math.abs(B) == 1) {
+            if (A > Integer.MAX_VALUE || (long) A * B > Integer.MAX_VALUE) {
                 return Integer.MAX_VALUE;
             } else {
-                if(B > 0){
-                    return -A;
-                }else{
-                    return A;
-                }
-
+                return A;
             }
         }
-        while(A>=n){
-            n += B;
+
+        while(Math.abs((long)A)>=n){
+            n = n + Math.abs(B);
+           // System.out.println("n:"+n);
             cnt++;
             if(cnt > Integer.MAX_VALUE){
                 return Integer.MAX_VALUE;
             }
-
         }
-        return cnt;
+        if((A>0 && B>0) || (A<0 && B<0)){
+            return (int)cnt;
+        }else{
+            return -(int)cnt;
+        }
+
+
     }
 }

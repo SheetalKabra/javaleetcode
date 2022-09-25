@@ -2,7 +2,7 @@
 public class ReverseBits {
     public long reverse1(long a) {
 
-        System.out.println(Long.toBinaryString(a));
+        //System.out.println("==="+Long.toBinaryString(a));
         long[] binaryNum = new long[32];
         int i = 0;
         while(a > 0){
@@ -16,7 +16,7 @@ public class ReverseBits {
             reversebit = reversebit + (long)Math.pow(2, power)*binaryNum[j];
             power++;
         }
-        System.out.println(Long.toBinaryString(reversebit));
+        //System.out.println(Long.toBinaryString(reversebit));
         return reversebit;
     }
     public long reverse2(long a) {
@@ -67,6 +67,6 @@ public class ReverseBits {
         //4294967296
         System.out.println(r.reverse1(Long.valueOf(5)));
         //System.out.println(r.reverse2((long)5));
-        System.out.println(r.reverse3((long)5));
+       // System.out.println(r.reverse3((long)5));
     }
 }
