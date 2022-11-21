@@ -6,8 +6,8 @@ public class ScalerAd_BinarySearch3_AllocateBooks {
 
     public static void main(String[] args) {
 //        System.out.println(books(new ArrayList<>(Arrays.asList(12, 34, 67, 90)), 2));
-//        System.out.println(books(new ArrayList<>(Arrays.asList(31, 14, 19, 75)), 12));
-        System.out.println(books(new ArrayList<>(Arrays.asList(73, 58, 30, 72, 44, 78, 23, 95)), 5));
+//        System.out.println(books(new ArrayList<>(Arrays.asList(31, 14, 19, 75)), 12));//75
+        System.out.println(books(new ArrayList<>(Arrays.asList(73, 58, 30, 72, 44, 78, 23, 95)), 5));//116
     }
     public static int books(ArrayList<Integer> A, int B) {
         int N = A.size();
@@ -48,6 +48,9 @@ public class ScalerAd_BinarySearch3_AllocateBooks {
             }
         }
         if(B == 0){
+            return true;
+        }
+        if(B!=0 && pagesAllocate>0){
             return true;
         }
         return false;
