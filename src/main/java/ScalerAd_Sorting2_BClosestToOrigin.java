@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class ScalerAd_Sorting2_BClosestToOrigin {
     public static void main(String[] args) {
@@ -86,61 +87,24 @@ public class ScalerAd_Sorting2_BClosestToOrigin {
           A.add(new ArrayList<>(Arrays.asList(86, -315)));
           A.add(new ArrayList<>(Arrays.asList(-89, 466)));
           A.add(new ArrayList<>(Arrays.asList(383, -447)));
-          System.out.println(solve(A,8));//[-450 114 ] [-370 81 ] [-286 228 ] [-89 466 ] [86 -315 ] [156 -484 ] [383 -447 ] [476 -87 ]
+          //System.out.println(solve(A,8));//[-450 114 ] [-370 81 ] [-286 228 ] [-89 466 ] [86 -315 ] [156 -484 ] [383 -447 ] [476 -87 ]
     }
-    public static ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> A, int B) {
-        int N = A.size();
-        mergeSort(A,0,N-1);
-        System.out.println("final A:"+A);
-        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        for(int i=0; i<B; i++){
-            result.add(i, A.get(i));
-        }
-        return result;
-    }
+    //merge sort will not work here
 
-    public static void mergeSort(ArrayList<ArrayList<Integer>> A, int l, int r){
-        if(l==r){
-            return;
-        }
-        int mid = (l+r)/2;
-        mergeSort(A, l, mid);
-        mergeSort(A, mid+1, r);
-        merge(A, l,mid+1, r);
-    }
-
-    public static ArrayList<ArrayList<Integer>> merge(ArrayList<ArrayList<Integer>> A, int l, int y, int r){
-        int p1 = l;
-        int p2 = y;
-        int p3 = 0;
-        ArrayList<ArrayList<Integer>> temp = new ArrayList<>();
-        while(p1<y && p2<=r){
-            if(A.get(p1).get(0) <= A.get(p2).get(0)){
-                temp.add(p3, A.get(p1));
-                p1++;
-                p3++;
-            }else if(A.get(p2).get(0) < A.get(p1).get(0)){
-                temp.add(p3, A.get(p2));
-                p2++;
-                p3++;
+    public static int[][] solve(int[][] A, int B) {
+        int[][] result = new int[B][2];
+        Arrays.sort(A, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                int a1 = o1[0]*o1[0] + o1[1]*o1[1];
+                int a2 = o2[0]*o2[0] + o2[1]*o2[1];
+                return a1-a2;
             }
+        });
+        for(int i=0; i<B; i++){
+            result[i] = new int[]{A[i][0], A[i][1]};
         }
-        while(p1<y){
-            temp.add(p3, A.get(p1));
-            p1++;
-            p3++;
-        }
-        while(p2<=r){
-            temp.add(p3, A.get(p2));
-            p2++;
-            p3++;
-        }
-        System.out.println("temp:"+temp);
-        for(int i=l;i<=r;i++){
-            A.set(i, temp.get(i-l));
-        }
-        System.out.println("A:"+A);
-        System.out.println("outt");
-        return  temp;
+        return  result;
     }
+
 }
