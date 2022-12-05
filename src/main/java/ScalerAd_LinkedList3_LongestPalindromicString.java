@@ -60,8 +60,8 @@ public class ScalerAd_LinkedList3_LongestPalindromicString {
     public static int solve(ListNode A) {
         int max = Integer.MIN_VALUE;
         int N = lengthOfLL(A);
-
-        for(int i=5; i<=5; i++){
+        ListNode freshlist = A;
+        for(int i=2; i<=N; i++){
             ListNode tmp = A;
             int count = 1;
             while(count < i){
@@ -70,7 +70,7 @@ public class ScalerAd_LinkedList3_LongestPalindromicString {
             }
             ListNode p2 = tmp.next;
             tmp.next = null;
-            ListNode B = A;
+            ListNode B = tmp;
             if(isPalindrome(B)){
                 max = Math.max(i, max);
             }

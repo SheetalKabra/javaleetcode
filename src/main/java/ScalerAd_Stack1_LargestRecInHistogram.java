@@ -39,6 +39,8 @@ public class ScalerAd_Stack1_LargestRecInHistogram{
                 }
                 str.push(i);
             }
+            System.out.println("l"+l);
+            System.out.println("r"+r);
             long ans = Integer.MIN_VALUE;
             for(int i=0; i<N; i++){
                 ans = Math.max(ans, (long)A.get(i)*(r.get(i) - l.get(i) - 1));
@@ -48,6 +50,7 @@ public class ScalerAd_Stack1_LargestRecInHistogram{
 
     public static void main(String[] args) {
 //        System.out.println(largestRectangleArea(new ArrayList<>(Arrays.asList(2, 1, 5, 6, 2, 3))));
-        System.out.println(largestRectangleArea(new ArrayList<>(Arrays.asList(2))));
+        System.out.println(largestRectangleArea(new ArrayList<>(Arrays.asList(2, 1, 4, 7, 5, 2, 1, 3))));
+//        System.out.println(largestRectangleArea(new ArrayList<>(Arrays.asList(2))));
     }
 }
