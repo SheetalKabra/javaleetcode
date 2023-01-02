@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class abc {
     public int kthMex(int n, int k, int arr[]) {
         int m = 0;
