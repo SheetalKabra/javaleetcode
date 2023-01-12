@@ -23,6 +23,7 @@ public class ScalerAd_Stacks2_MaxRectangle {
 //        System.out.println(s.solve(rows));
     }
     public int solve(ArrayList<ArrayList<Integer>> A) {
+        System.out.println("A: "+A);
         //prepare an 2-D array for largest rectangle in histogram
         //1. check col wise 1's
         int rows = A.size();
@@ -39,6 +40,7 @@ public class ScalerAd_Stacks2_MaxRectangle {
             }
             histRows.add(histcols);
         }
+        System.out.println("histrows:"+histRows);
         for(int j=0; j<cols;j++){
             for(int i=1; i<rows; i++){
                 if(A.get(i).get(j) == 1){
@@ -49,6 +51,7 @@ public class ScalerAd_Stacks2_MaxRectangle {
                 }
             }
         }
+        System.out.println("histrows:"+histRows);
         int ans = Integer.MIN_VALUE;
         for(int i=0; i<rows; i++){
             ans = Math.max(ans, largestRectArea(histRows.get(i)));
@@ -57,6 +60,7 @@ public class ScalerAd_Stacks2_MaxRectangle {
     }
 
     public int largestRectArea(ArrayList<Integer> A){
+        System.out.println("A::"+A);
         int N = A.size();
         ArrayList<Integer> l = new ArrayList<>();
         ArrayList<Integer> r = new ArrayList<>();
@@ -89,19 +93,12 @@ public class ScalerAd_Stacks2_MaxRectangle {
             }
             str.add(i);
         }
+        System.out.println("r:"+r);
+        System.out.println("l:"+l);
         long ans = Integer.MIN_VALUE;
         for(int i=0; i<N; i++){
             ans = Math.max(ans, (r.get(i) - l.get(i) - 1) * (long)A.get(i));
         }
-        ArrayList<Integer> a1 = new ArrayList<>();
-        ArrayList<Integer> b1 = new ArrayList<>();
-        if(a1.get(0).equals(b1.get(0))){
-
-        }
         return (int)ans;
-
-
-
-
     }
 }
