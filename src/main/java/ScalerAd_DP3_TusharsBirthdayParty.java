@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ScalerAd_DP3_TusharsBirthdayParty {
@@ -26,41 +27,38 @@ public class ScalerAd_DP3_TusharsBirthdayParty {
                 new ArrayList<>(Arrays.asList(1, 2, 3, 5, 5, 10))
         ));
     }
+
     public int solve(final List<Integer> A, final List<Integer> B, final List<Integer> C) {
-        int N = A.size();
-        int M = B.size();
-        int mincost = 0;
-        for(int i=0; i<N; i++){
-            int[][] dp = new int[M+1][A.get(i)+1];
-            for(int j=0; j<=M; j++){
-                Arrays.fill(dp[j], -1);
-            }
-            mincost += minways(M, A.get(i), C, B, dp);
+        int maxCap = Collections.max(A);
+        int i = B.size();
+        int j = maxCap;
+        long[][] dp = new long[i+1][j+1];
+        for(long[] row: dp){
+            Arrays.fill(row, -1);
         }
-        return mincost;
+        long ans = 0;
+        for(int k=0 ; k<A.size(); k++){
+            ans += find(i, A.get(k), dp, B, C);
+        }
+        return (int)ans;
     }
 
-    public int minways(int N, int C, List<Integer> cost, List<Integer> wt, int[][] dp){
-        if(N == 0){
-            return Integer.MAX_VALUE;
-        }
-        if(C == 0){
+    public long find(int i, int j, long[][] dp, List<Integer> B, List<Integer> C){
+        if(j == 0){
             return 0;
         }
-        if(dp[N][C] != -1){
-            return dp[N][C];
+        if(i == 0){
+            return Integer.MAX_VALUE;
         }
-        int ans = minways(N-1, C, cost, wt, dp);
-
-        if(C - wt.get(N-1) >= 0){
-            int pick = minways(N, C-wt.get(N-1), cost, wt, dp);
-            if(pick != Integer.MAX_VALUE){
-                pick += cost.get(N-1);
-            }
-            //int pick = cost.get(N-1) + minways(N, C-wt.get(N-1), cost, wt, dp) ;
-            ans =  Math.min(ans, pick);
+        if(dp[i][j] != -1){
+            return dp[i][j];
         }
-        return dp[N][C] = ans;
+        if (j >= B.get(i - 1)) {
+            dp[i][j] = Math.min(find(i - 1, j, dp, B, C), C.get(i - 1) + find(i, j - B.get(i - 1), dp, B, C));
+        } else {
+            dp[i][j] = find(i - 1, j, dp, B, C);
+        }
+        return dp[i][j];
     }
 
 }
