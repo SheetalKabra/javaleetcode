@@ -1,7 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.TreeMap;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.stream.Stream;
 
 public class abc {
+
+    public abc(){
+
+    }
+
+    public abc(int a){
+        this(1,2);
+    }
+
+    public abc(int a, int b){
+
+    }
+
     public int kthMex(int n, int k, int arr[]) {
+
         int m = 0;
          int value=0;
          boolean isPresent = false;
@@ -34,6 +54,21 @@ public class abc {
     }
 
     public static void main(String[] args) {
+        //Thread t1 = new
+
+        final List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(12);
+        list.add(13);
+        list.add(4);
+
+        System.out.println(list);
+        list.remove(2);
+        System.out.println(list);
+        list.set(0, 122);
+        System.out.println(list);
+
+
         abc n = new abc();
         int[] a = new int[10];
         a[0] = 2;
