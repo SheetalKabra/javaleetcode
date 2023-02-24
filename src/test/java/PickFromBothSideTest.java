@@ -1,3 +1,4 @@
+import Scaler.PickFromBothSide;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

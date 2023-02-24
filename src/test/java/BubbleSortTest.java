@@ -1,3 +1,5 @@
+import Scaler.BubbleSort;
+import Scaler.InvalidInputException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

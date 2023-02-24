@@ -38,6 +38,39 @@ public class StreamQuestions {
         employeelist.add(new Employee(255, "Jiya Berlin11", 65, "male", "Security and transport", 2032, 43500.00));
         employeelist.add(new Employee(266, "Ali Baig", 43, "male", "Product development", 2022, 234500.00));
 
+        System.out.println("before:"+employeelist.size());
+
+        for (Employee employee : employeelist) {
+            if(employee.getName() == "Biya Kumar"){
+                employeelist.remove(employee);
+            }
+        }
+
+        for (Iterator<Employee> itr = employeelist.iterator(); itr.hasNext();) {
+            Employee employee = itr.next();
+            if (employee.getName() == "Biya Kumar") {
+//                employeelist.remove(employee);
+                itr.remove();
+            }
+        }
+
+        int size = employeelist.size();
+        for(int i = 0; i< size; i++){
+//            switch (employeelist.get(i).getName()) {
+//                case "Biya Kumar":
+//                    System.out.println("in switch");
+//                    break;
+//                default:
+//
+//            }
+            if(employeelist.get(i).getName() == "Biya Kumar"){
+                System.out.println("remove");
+                employeelist.remove(i);
+            }
+        }
+        System.out.println("after:"+employeelist.size());
+        System.out.println(employeelist);
+
         //1. how many males and females are there in employee
         method1();
         Map<String, Long> collect = employeelist.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));

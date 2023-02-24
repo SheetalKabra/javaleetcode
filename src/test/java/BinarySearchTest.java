@@ -1,3 +1,5 @@
+import Scaler.BinarySearch;
+import Scaler.InvalidInputException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -66,7 +68,7 @@ class BinarySearchTest {
         assertEquals(2, itemPlace);
     }
     @Test
-    void binarySearchUsingArrayList4() throws InvalidInputException{
+    void binarySearchUsingArrayList4() throws InvalidInputException {
         List<Integer> list = Arrays.asList(2,8,9,13,20,21,23,45,50);
         int itemPlace = binarySearch.binarySearchUsingArrayList(list, 13);
         assertEquals(3, itemPlace);

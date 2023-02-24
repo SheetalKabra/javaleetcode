@@ -1,3 +1,5 @@
+import Scaler.InvalidInputException;
+import Scaler.SelectionSort;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
